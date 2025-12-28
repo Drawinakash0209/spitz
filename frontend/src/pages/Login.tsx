@@ -28,241 +28,82 @@ export default function Login() {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(to bottom right, #2563eb, #4f46e5, #7c3aed)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '1rem',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Animated background elements */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        opacity: 0.1,
-        pointerEvents: 'none'
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: '5rem',
-          left: '5rem',
-          width: '18rem',
-          height: '18rem',
-          background: 'white',
-          borderRadius: '9999px',
-          filter: 'blur(64px)',
-          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          bottom: '5rem',
-          right: '5rem',
-          width: '24rem',
-          height: '24rem',
-          background: 'white',
-          borderRadius: '9999px',
-          filter: 'blur(64px)',
-          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          animationDelay: '1s'
-        }}></div>
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
       </div>
 
-      <div style={{
-        position: 'relative',
-        background: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(8px)',
-        borderRadius: '1rem',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-        padding: '2rem',
-        width: '100%',
-        maxWidth: '28rem',
-        border: '1px solid rgba(255, 255, 255, 0.2)'
-      }}>
+      <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 w-full max-w-md border border-white/20">
         {/* Logo/Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '4rem',
-            height: '4rem',
-            background: 'linear-gradient(to bottom right, #2563eb, #4f46e5)',
-            borderRadius: '1rem',
-            marginBottom: '1rem',
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-          }}>
-            <svg style={{ width: '2.5rem', height: '2.5rem', color: 'white' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl mb-4 shadow-lg">
+            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h1 style={{
-            fontSize: '1.875rem',
-            fontWeight: 700,
-            color: '#111827',
-            marginBottom: '0.5rem'
-          }}>
-            Spitz Dental Lab
-          </h1>
-          <p style={{ color: '#6b7280' }}>
-            Welcome back! Please sign in to continue
-          </p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Spitz Dental Lab</h1>
+          <p className="text-gray-600">Welcome back! Please sign in to continue</p>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           {error && (
-            <div style={{
-              background: '#fef2f2',
-              border: '1px solid #fecaca',
-              color: '#991b1b',
-              padding: '0.75rem 1rem',
-              borderRadius: '0.75rem',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '0.75rem',
-              marginBottom: '1.25rem'
-            }}>
-              <AlertCircle style={{ width: '1.25rem', height: '1.25rem', marginTop: '0.125rem', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.875rem' }}>{error}</span>
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <span className="text-sm">{error}</span>
             </div>
           )}
 
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{
-              display: 'block',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              color: '#374151',
-              marginBottom: '0.5rem'
-            }}>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-gray-700">
               Email Address
             </label>
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                left: 0,
-                paddingLeft: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                pointerEvents: 'none'
-              }}>
-                <Mail style={{ height: '1.25rem', width: '1.25rem', color: '#9ca3af' }} />
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Mail className="h-5 w-5 text-gray-400" />
               </div>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: '100%',
-                  paddingLeft: '3rem',
-                  paddingRight: '1rem',
-                  paddingTop: '0.75rem',
-                  paddingBottom: '0.75rem',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '0.75rem',
-                  outline: 'none',
-                  transition: 'all 0.2s'
-                }}
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 outline-none"
                 placeholder="you@example.com"
                 required
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#3b82f6';
-                  e.target.style.boxShadow = '0 0 0 2px rgba(59, 130, 246, 0.5)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
               />
             </div>
           </div>
 
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label style={{
-              display: 'block',
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              color: '#374151',
-              marginBottom: '0.5rem'
-            }}>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-gray-700">
               Password
             </label>
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                left: 0,
-                paddingLeft: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                pointerEvents: 'none'
-              }}>
-                <Lock style={{ height: '1.25rem', width: '1.25rem', color: '#9ca3af' }} />
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Lock className="h-5 w-5 text-gray-400" />
               </div>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{
-                  width: '100%',
-                  paddingLeft: '3rem',
-                  paddingRight: '1rem',
-                  paddingTop: '0.75rem',
-                  paddingBottom: '0.75rem',
-                  border: '1px solid #d1d5db',
-                  borderRadius: '0.75rem',
-                  outline: 'none',
-                  transition: 'all 0.2s'
-                }}
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 outline-none"
                 placeholder="••••••••"
                 required
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#3b82f6';
-                  e.target.style.boxShadow = '0 0 0 2px rgba(59, 130, 246, 0.5)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.boxShadow = 'none';
-                }}
               />
             </div>
           </div>
 
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            fontSize: '0.875rem',
-            marginBottom: '1.25rem'
-          }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+          <div className="flex items-center justify-between text-sm">
+            <label className="flex items-center gap-2 cursor-pointer group">
               <input 
                 type="checkbox" 
-                style={{
-                  width: '1rem',
-                  height: '1rem',
-                  borderRadius: '0.25rem',
-                  border: '1px solid #d1d5db',
-                  cursor: 'pointer'
-                }}
+                className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
               />
-              <span style={{ color: '#6b7280' }}>Remember me</span>
+              <span className="text-gray-600 group-hover:text-gray-900 transition-colors">Remember me</span>
             </label>
             <button
               type="button"
-              style={{
-                color: '#2563eb',
-                fontWeight: 500,
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'color 0.2s'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#1d4ed8'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#2563eb'}
+              className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
             >
               Forgot password?
             </button>
@@ -271,36 +112,13 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            style={{
-              width: '100%',
-              background: loading ? '#9ca3af' : 'linear-gradient(to right, #2563eb, #4f46e5)',
-              color: 'white',
-              paddingTop: '0.875rem',
-              paddingBottom: '0.875rem',
-              borderRadius: '0.75rem',
-              fontWeight: 600,
-              border: 'none',
-              cursor: loading ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s',
-              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-              opacity: loading ? 0.5 : 1
-            }}
-            onMouseEnter={(e) => {
-              if (!loading) {
-                e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3.5 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
           >
             {loading ? (
-              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                <svg style={{ animation: 'spin 1s linear infinite', height: '1.25rem', width: '1.25rem' }} viewBox="0 0 24 24">
-                  <circle style={{ opacity: 0.25 }} cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
-                  <path style={{ opacity: 0.75 }} fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 Signing in...
               </span>
@@ -310,30 +128,10 @@ export default function Login() {
           </button>
         </form>
 
-        <div style={{
-          marginTop: '1.5rem',
-          textAlign: 'center',
-          fontSize: '0.875rem',
-          color: '#6b7280'
-        }}>
-          Need help? <a href="#" style={{
-            color: '#2563eb',
-            fontWeight: 500,
-            textDecoration: 'none'
-          }}>Contact Support</a>
+        <div className="mt-6 text-center text-sm text-gray-600">
+          Need help? <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">Contact Support</a>
         </div>
       </div>
-
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-      `}</style>
     </div>
   );
 }
