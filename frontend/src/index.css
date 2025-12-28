@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* Delete the @tailwind base and @tailwind components lines */
-
 * {
   margin: 0;
   padding: 0;
