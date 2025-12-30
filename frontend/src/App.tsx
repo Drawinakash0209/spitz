@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import NewClinic from './pages/NewClinic';
 import { useAuthStore } from './store/authStore';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -9,7 +10,11 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const loading = useAuthStore((state) => state.loading);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent"></div>
+      </div>
+    );
   }
 
   return user ? <>{children}</> : <Navigate to="/login" />;
@@ -31,6 +36,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/clinics/new"
+          element={
+            <ProtectedRoute>
+              <NewClinic />
             </ProtectedRoute>
           }
         />
