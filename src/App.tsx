@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import ClinicDetail from './pages/ClinicDetail';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import NewCase from './pages/NewCase';
 import NewClinic from './pages/NewClinic';
 import { useAuthStore } from './store/authStore';
 
@@ -48,6 +50,22 @@ function App() {
           }
         />
         <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route
+  path="/cases/new"
+  element={
+    <ProtectedRoute>
+      <NewCase />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/clinics/:id"
+  element={
+    <ProtectedRoute>
+      <ClinicDetail />
+    </ProtectedRoute>
+  }
+/>
       </Routes>
     </BrowserRouter>
   );
